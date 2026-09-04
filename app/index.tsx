@@ -1,9 +1,17 @@
 import { View, Text, StyleSheet } from "react-native";
+import { useTheme } from "../hooks/useTheme";
 
 export default function DashboardScreen() {
+  const { colors, spacing, typography } = useTheme();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>FieldOps — Dashboard</Text>
+    <View style={[styles.container, { backgroundColor: colors.background, padding: spacing.lg }]}>
+      <Text style={[typography.title, { color: colors.textPrimary }]}>
+        FieldOps
+      </Text>
+      <Text style={[typography.body, { color: colors.textSecondary, marginTop: spacing.xs }]}>
+        Dashboard
+      </Text>
     </View>
   );
 }
@@ -11,11 +19,6 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    fontSize: 18,
-    fontWeight: "600",
   },
 });
